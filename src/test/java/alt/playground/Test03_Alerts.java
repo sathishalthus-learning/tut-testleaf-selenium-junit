@@ -1,10 +1,7 @@
 package alt.playground;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 import java.time.Duration;
-import java.util.Set;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;

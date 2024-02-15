@@ -1,10 +1,8 @@
 package alt.playground;
 
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 import java.time.Duration;
-import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -65,7 +63,7 @@ public class Test01_Windows {
 		driver.findElement(By.id("menuform:j_idt39")).click();
 		driver.findElement(By.id("menuform:m_window")).click();
 		//
-		String primaryWindowHandle = driver.getWindowHandle();
+//		String primaryWindowHandle = driver.getWindowHandle();
 		driver.findElement(By.id("j_idt88:j_idt93")).click();
 		
 //		for(String handle:driver.getWindowHandles()) {

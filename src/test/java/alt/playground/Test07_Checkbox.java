@@ -5,6 +5,7 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.Random;
 
 import org.openqa.selenium.By;
@@ -15,6 +16,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.v118.dom.model.Rect;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.locators.RelativeLocator;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.testng.annotations.AfterTest;
@@ -42,80 +44,78 @@ public class Test07_Checkbox {
 	
 	//
 	@Test
-	public void selectFavoriteAutomationTool() {
+	public void basicCheckBox() throws InterruptedException {
 		//
 		driver.findElement(By.id("menuform:j_idt40")).click();
-		driver.findElement(By.id("menuform:m_dropdown")).click();
+		driver.findElement(By.id("menuform:m_checkbox")).click();
 		//
-		WebElement dropAutomation = driver.findElement(By.xpath("//select[@class='ui-selectonemenu']"));
-		Select automationList = new Select(dropAutomation);
-		automationList.selectByVisibleText("Playwright");
+		driver.findElement(By.className("ui-chkbox-label")).click();
+		Thread.sleep(3000);
 	}
 
 	//
 	@Test
-	public void selectFavoriteCountry() {
+	public void notification() throws InterruptedException {
 		//
 		driver.findElement(By.id("menuform:j_idt40")).click();
-		driver.findElement(By.id("menuform:m_dropdown")).click();
+		driver.findElement(By.id("menuform:m_checkbox")).click();
 		//
-		WebElement dropAutomation = driver.findElement(By.id("j_idt87:country_input"));
-		Select countryList = new Select(dropAutomation);
-		countryList.selectByValue("Brazil"); // value in DOM
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:j_idt91\"]/span")).click();
+		Thread.sleep(2000);
 	}
 	
 	//
 	@Test
-	public void selectFavoriteCountryCity() throws InterruptedException {
+	public void favoriteLanguage() throws InterruptedException {
 		//
 		driver.findElement(By.id("menuform:j_idt40")).click();
-		driver.findElement(By.id("menuform:m_dropdown")).click();
+		driver.findElement(By.id("menuform:m_checkbox")).click();
+		//
+		List<WebElement> favoriteLanguages = driver.findElements(By.xpath("//table[@id='j_idt87:basic']//label"));
+		for(WebElement element: favoriteLanguages) {
+			System.out.println(element.getText());
+		}
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:basic\"]/tbody/tr/td[1]/label")).click();
+	}
+	
+	//
+	@Test
+	public void triStateCheckbox() throws InterruptedException {
+		//
+		driver.findElement(By.id("menuform:j_idt40")).click();
+		driver.findElement(By.id("menuform:m_checkbox")).click();
+		//
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:ajaxTriState\"]/div[2]/span")).click();
+	}
+	
+	//
+	@Test
+	public void toggleSwitch() throws InterruptedException {
+		//
+		driver.findElement(By.id("menuform:j_idt40")).click();
+		driver.findElement(By.id("menuform:m_checkbox")).click();
 		//
 		
-		Thread.sleep(3000);
-		WebElement dropAutomation1 = driver.findElement(By.id("j_idt87:country_input"));
-		Select countryList = new Select(dropAutomation1);
-		countryList.selectByVisibleText("Brazil");
-		Thread.sleep(3000);
-		WebElement dropAutomation2 = driver.findElement(By.id("j_idt87:city_input"));
-		Select cityList = new Select(dropAutomation2);
-		cityList.selectByVisibleText("Salvador");
 	}
 	
 	//
 	@Test
-	public void typeAndChooseCourse() throws InterruptedException {
+	public void disabledCheckbox() throws InterruptedException {
 		//
 		driver.findElement(By.id("menuform:j_idt40")).click();
-		driver.findElement(By.id("menuform:m_dropdown")).click();
+		driver.findElement(By.id("menuform:m_checkbox")).click();
 		//
-		driver.findElement(By.id("j_idt87:auto-complete_input")).sendKeys("AWS"+Keys.ENTER);
-		Thread.sleep(3000);
+		
 	}
 	
 	//
 	@Test
-	public void chooseLanguageRandomly() throws InterruptedException {
+	public void selectMultiple() throws InterruptedException {
 		//
 		driver.findElement(By.id("menuform:j_idt40")).click();
-		driver.findElement(By.id("menuform:m_dropdown")).click();
+		driver.findElement(By.id("menuform:m_checkbox")).click();
 		//
-		WebElement languageDropdown = driver.findElement(By.id("j_idt87:lang_input"));
-		Select language = new Select(languageDropdown);
-		language.selectByIndex(3);
-		Thread.sleep(3000);
 	}
+		
 	
-	//
-	@Test
-	public void chooseLanguageAndSelectItem2() throws InterruptedException {
-		//
-		driver.findElement(By.id("menuform:j_idt40")).click();
-		driver.findElement(By.id("menuform:m_dropdown")).click();
-		//
-		WebElement languageDropdown = driver.findElement(By.id("j_idt87:lang_input"));
-		Select language = new Select(languageDropdown);
-		language.selectByIndex(3);
-		Thread.sleep(3000);
-	}
 }

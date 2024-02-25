@@ -39,7 +39,7 @@ public class Test09_Links {
 	//
 	@AfterTest
 	public void tearDown() {
-		driver.quit();
+		driver.quit(); 
 	}
 	
 	//

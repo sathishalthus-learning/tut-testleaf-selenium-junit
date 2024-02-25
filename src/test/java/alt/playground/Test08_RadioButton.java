@@ -39,7 +39,7 @@ public class Test08_RadioButton {
 	//
 	@AfterTest
 	public void tearDown() {
-		driver.quit();
+		driver.quit(); 
 	}
 	
 	//

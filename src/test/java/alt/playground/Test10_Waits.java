@@ -40,7 +40,7 @@ public class Test10_Waits {
 	//
 	@AfterTest
 	public void tearDown() {
-		driver.quit();
+		driver.quit(); 
 	}
 	
 	//

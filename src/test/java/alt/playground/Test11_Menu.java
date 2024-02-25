@@ -56,6 +56,7 @@ public class Test11_Menu {
 		System.out.println(menubar.size());
 		for (WebElement menuitem : menubar) {
 			System.out.println(menuitem.getText());
+			
 		}
 		
 	}
